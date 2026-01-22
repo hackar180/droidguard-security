@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { PERMISSIONS, SECURITY_TIPS } from './constants';
-import PermissionCard from './components/PermissionCard';
+import PermissionCard from './PermissionCard'; // এখানে পরিবর্তন করা হয়েছে
 
 const App: React.FC = () => {
   return (
@@ -96,36 +95,4 @@ const App: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-indigo-300 mb-1">Avoid Remote Exfiltration</h4>
-                  <p className="text-slate-400 text-sm">Processing sensitive data locally is always preferred. Sending personal data to a remote server (like a Render URL) requires robust encryption and a strict Privacy Policy.</p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center shrink-0">
-                  <i className="fa-solid fa-check text-xs"></i>
-                </div>
-                <div>
-                  <h4 className="font-bold text-indigo-300 mb-1">Use Official Stores</h4>
-                  <p className="text-slate-400 text-sm">Avoid downloading tools (like AIDE) from unofficial sources or using bypass techniques. These often contain Trojans that target the developer's data.</p>
-                </div>
-              </li>
-            </ul>
-          </section>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-slate-100 border-t border-slate-200 mt-12 py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-slate-500 text-sm font-medium">
-            DroidGuard Educational Platform &copy; {new Date().getFullYear()}
-          </p>
-          <p className="text-slate-400 text-xs mt-2">
-            Build for a secure and open web.
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default App;
+                  <p className="text-slate-400 text-
