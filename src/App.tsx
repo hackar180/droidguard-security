@@ -1,10 +1,10 @@
 import React from 'react';
 import { PERMISSIONS, SECURITY_TIPS } from './constants';
-import PermissionCard from './PermissionCard'; // এখানে পরিবর্তন করা হয়েছে
+import PermissionCard from './PermissionCard';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Header */}
       <header className="bg-indigo-600 text-white shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
@@ -21,7 +21,7 @@ const App: React.FC = () => {
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8 max-w-6xl">
-        {/* Policy Notice / Refusal Section */}
+        {/* Policy Notice */}
         <section className="bg-amber-50 border-l-4 border-amber-500 p-6 mb-12 rounded-r-xl shadow-sm">
           <div className="flex items-start gap-4">
             <div className="text-amber-500 mt-1">
@@ -30,7 +30,7 @@ const App: React.FC = () => {
             <div>
               <h2 className="text-amber-900 font-bold text-lg mb-2">Notice: Ethical Development Policy</h2>
               <p className="text-amber-800 text-sm leading-relaxed">
-                As a professional software engineer, I cannot fulfill requests to generate code intended for unauthorized data collection (spyware), background exfiltration of personal information (contacts, location), or instructions on bypassing software licensing. Such activities violate privacy standards and software integrity policies. Instead, this platform serves as an educational resource for building secure and ethical applications.
+                As a professional software engineer, I cannot fulfill requests to generate code intended for unauthorized data collection (spyware), background exfiltration of personal information, or instructions on bypassing software licensing. This platform serves as an educational resource for building secure and ethical applications.
               </p>
             </div>
           </div>
@@ -40,11 +40,18 @@ const App: React.FC = () => {
         <section className="mb-12">
           <div className="mb-8">
             <h2 className="text-2xl font-black text-slate-800 mb-2">Permission Risk Profiles</h2>
-            <p className="text-slate-500">Understanding why certain permissions are considered sensitive and how they are abused.</p>
+            <p className="text-slate-500">Understanding why certain permissions are considered sensitive.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {PERMISSIONS.map((perm) => (
-              <PermissionCard key={perm.id} permission={perm} />
+              <PermissionCard 
+                key={perm.id} 
+                id={perm.id}
+                title={perm.title}
+                description={perm.description}
+                risk={perm.risk as 'High' | 'Medium' | 'Low'}
+                icon={perm.icon}
+              />
             ))}
           </div>
         </section>
@@ -76,8 +83,8 @@ const App: React.FC = () => {
                   <i className="fa-solid fa-check text-xs"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-indigo-300 mb-1">Least Privilege Principle</h4>
-                  <p className="text-slate-400 text-sm">Always request only the minimum set of permissions your app needs to function. Avoid broad permissions like "Read SMS" if you only need "Receive SMS".</p>
+                  <h4 className="font-bold text-indigo-300 mb-1">Least Privilege</h4>
+                  <p className="text-slate-400 text-sm">Always request only the minimum set of permissions your app needs.</p>
                 </div>
               </li>
               <li className="flex gap-4">
@@ -86,13 +93,24 @@ const App: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-indigo-300 mb-1">Transparent Disclosures</h4>
-                  <p className="text-slate-400 text-sm">Inform users exactly why you need a permission *before* the system dialog appears. Use "Rationale Strings" to explain the benefit.</p>
+                  <p className="text-slate-400 text-sm">Inform users exactly why you need a permission before asking.</p>
                 </div>
               </li>
-              <li className="flex gap-4">
-                <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center shrink-0">
-                  <i className="fa-solid fa-check text-xs"></i>
-                </div>
-                <div>
-                  <h4 className="font-bold text-indigo-300 mb-1">Avoid Remote Exfiltration</h4>
-                  <p className="text-slate-400 text-
+            </ul>
+          </section>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-slate-100 border-t border-slate-200 mt-12 py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-slate-500 text-sm font-medium">
+            DroidGuard Educational Platform &copy; {new Date().getFullYear()}
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
